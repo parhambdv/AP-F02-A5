@@ -4,9 +4,11 @@ COMPILE_FLAGS = $(FLAGS) -c
 
 all: bomberman.out
 
-bomberman.out: wall.o TextField.o Player.o Label.o Home.o Game.o Button.o Box.o  Bomb.o  AddPhoto.o 
-	$(CC) wall.o TextField.o Player.o Label.o Home.o Game.o Button.o Box.o Bomb.o AddPhoto.o  $(FLAGS) -o bomberman.out
+bomberman.out:main.o wall.o TextField.o Player.o Label.o Home.o Game.o Button.o Box.o  Bomb.o  
+	$(CC)  main.o wall.o TextField.o Player.o Label.o Home.o Game.o Button.o Box.o Bomb.o   $(FLAGS) -o bomberman.out
 	rm *.o
+main.o: main.cpp
+$(CC) $(COMPILE_FLAGS) main.cpp
 
 wall.o: wall.cpp
 	$(CC) $(COMPILE_FLAGS) wall.cpp
@@ -38,5 +40,3 @@ Bomb.o: Bomb.cpp
 Blocks.o: Blocks.cpp
 	$(CC) $(COMPILE_FLAGS) Blocks.cpp
 	
-Blocks.o: AddPhoto.cpp
-	$(CC) $(COMPILE_FLAGS) AddPhoto.cpp
